@@ -1,1 +1,44 @@
-<p>weather works!</p>
+<div>
+  <label> City:
+    <input [(ngModel)]='city' type='text'>
+  </label>
+
+  <label> State:
+    <input [(ngModel)]='state' type='text'/>
+  </label>
+
+  <button (click)="search()">Search</button>
+  <br><br>
+
+  <div [className]="showForecast ? '' : 'hidden'" style="width: 100%">
+    <h2 style="text-align: center; color: #004ca6"> Weather for {{city}} </h2>
+    <ul style="width: 500px; margin: auto;">
+      <li *ngFor="let forecast of forecastList"
+          style="color: #5e5e5e; text-align: center; list-style: none">
+
+        <div class="row">
+          <div class="column left">
+            <div class="header">
+              <b>{{forecast.time}}</b>
+            </div>
+          </div>
+
+          <div class="column middle">
+            <div class="image">
+              <img src="assets/{{forecast.image}}"> <br>
+              {{forecast.weather}}
+            </div>
+          </div>
+
+          <div class="column right">
+            <div class="content">
+              Temperature: <b>{{forecast.temp + '°F'}}</b> <br>
+              Feels Like: <b>{{forecast.feels_like + '°F'}}</b> <br>
+              Humidity: <b>{{forecast.humidity + '%'}}</b> <br>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
