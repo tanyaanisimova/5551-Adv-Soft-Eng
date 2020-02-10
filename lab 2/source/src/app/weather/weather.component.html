@@ -1,44 +1,128 @@
-<div>
-  <label> City:
-    <input [(ngModel)]='city' type='text'>
-  </label>
+<div class="container-xl" style="max-width: 55em;">
+  <div class="card border-dark mb-3">
+    <div class="card-header h4">
+      Weather Search
+    </div>
 
-  <label> State:
-    <input [(ngModel)]='state' type='text'/>
-  </label>
-
-  <button (click)="search()">Search</button>
-  <br><br>
-
-  <div [className]="showForecast ? '' : 'hidden'" style="width: 100%">
-    <h2 style="text-align: center; color: #004ca6"> Weather for {{city}} </h2>
-    <ul style="width: 500px; margin: auto;">
-      <li *ngFor="let forecast of forecastList"
-          style="color: #5e5e5e; text-align: center; list-style: none">
-
-        <div class="row">
-          <div class="column left">
-            <div class="header">
-              <b>{{forecast.time}}</b>
-            </div>
+    <div class="card-body bg-light">
+      <div class="container-fluid">
+        <div class="row mt-2">
+          <div class="col-sm" style="flex-basis: 10%;">
           </div>
 
-          <div class="column middle">
-            <div class="image">
-              <img src="assets/{{forecast.image}}"> <br>
-              {{forecast.weather}}
-            </div>
+          <div class="col-sm" style="flex-basis: 30%;">
+            <label>City:
+              <input [(ngModel)]="city" type="text" name="city"/>
+            </label>
           </div>
 
-          <div class="column right">
-            <div class="content">
-              Temperature: <b>{{forecast.temp + '°F'}}</b> <br>
-              Feels Like: <b>{{forecast.feels_like + '°F'}}</b> <br>
-              Humidity: <b>{{forecast.humidity + '%'}}</b> <br>
-            </div>
+          <div class="col-sm" style="flex-basis: 30%;">
+            <label>State:
+              <input [(ngModel)]="state" type="text" name="state"/>
+            </label>
+          </div>
+
+          <div class="col-sm" style="flex-basis: 20%;">
+            <button (click)="getWeather()" type="button" class="btn btn-primary">Search
+            </button>
+          </div>
+
+          <div class="col-sm" style="flex-basis: 10%;">
           </div>
         </div>
-      </li>
-    </ul>
+
+        <div class="card text-white bg-dark mb-3 center" *ngIf="showCurrentWeather" style="margin-top: 25px;">
+          <div class="card-header center">
+
+            <div class="row-list" style="width: 28em">
+              <div class="column-list" style="width: 75%; font-size: 20px; padding-top: 25px">
+                  Current Weather in {{ location }}
+              </div>
+
+              <div class="column-list" style="width: 25%;">
+                <div class="image" style="text-align: center">
+                  <img src="assets/images/{{currentWeather.image}}" alt="forecast image"> <br>
+                  {{currentWeather.description}}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <table class="table table-dark">
+              <tbody>
+                <tr>
+                  <td class="td-left">Temperature</td>
+                  <td class="td-right">{{ currentWeather.temp }} °F</td>
+                </tr>
+                <tr>
+                  <td class="td-left">Feels Like</td>
+                  <td class="td-right">{{ currentWeather.feels_like }} °F</td>
+                </tr>
+                <tr>
+                  <td class="td-left">Minimum Temperature</td>
+                  <td class="td-right">{{ currentWeather.temp_min }} °F</td>
+                </tr>
+                <tr>
+                  <td class="td-left">Maximum Temperature</td>
+                  <td class="td-right">{{ currentWeather.temp_max }} °F</td>
+                </tr>
+                <tr>
+                  <td class="td-left">Pressure</td>
+                  <td class="td-right">{{ currentWeather.pressure }} hPa</td>
+                </tr>
+                <tr>
+                  <td class="td-left">Humidity</td>
+                  <td class="td-right">{{ currentWeather.humidity }}%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card-header center" style="font-size: 20px">
+            Forecast
+          </div>
+
+          <div class="card-forecast" *ngIf="showHourlyWeather">
+          <ul style="width: 34em; margin: auto;">
+            <li *ngFor="let forecast of hourlyWeather">
+
+              <div class="row-list">
+                <div class="column-list left">
+                  <div class="list-header">
+                    <b>{{forecast.date}}</b> <br>
+                    <b>{{forecast.time}}</b>
+                  </div>
+                </div>
+
+                <div class="column-list middle">
+                  <div class="image">
+                    <img src="assets/images/{{forecast.image}}" alt="forecast image"> <br>
+                    {{forecast.weather}}
+                  </div>
+                </div>
+
+                <div class="column-list middle-right">
+                  <div class="content">
+                    Temperature: <br>
+                    Feels Like: <br>
+                    Humidity: <br>
+                  </div>
+                </div>
+
+                <div class="column-list right">
+                  <div class="content">
+                    <b>{{forecast.temp + '°F'}}</b> <br>
+                    <b>{{forecast.feels_like + '°F'}}</b> <br>
+                    <b>{{forecast.humidity + '%'}}</b> <br>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

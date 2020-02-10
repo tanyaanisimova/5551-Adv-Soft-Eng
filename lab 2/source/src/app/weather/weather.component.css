@@ -1,44 +1,108 @@
-.column {
+.container-xl {
+  margin-top: 3em;
+}
+
+.col-sm {
+  display: flex;
+  justify-content: center;
+}
+
+.card-header {
+  color: white;
+  background-color: #343a40;
+}
+
+input {
+  margin-top: 3px;
+}
+
+button {
+  margin: 0;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  max-width: 50em;
+}
+
+.card-body {
+  font-size: 15px;
+}
+
+.bg-light {
+  min-height: 20em;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.card-forecast {
+  background-color: #f8f9fa;
+  width: 35em;
+  border-radius: 5px;
+  margin: auto auto 20px;
+}
+
+table {
+  margin-bottom: 0;
+}
+
+ul {
+  padding: 0;
+}
+
+.column-list {
   float: left;
+  height: 80px;
   width: 33.33%;
 }
 
-.row:after {
+.row-list:after {
   content: "";
   display: table;
   clear: both;
 }
 
-.column {
-  float: left;
-  height: 80px;
-}
-
 .left {
   width: 25%;
+  border-right: #004ca6 solid 1px;
+  background: rgba(182, 221, 244, 0.49);
 }
 
 .middle {
   width: 30%;
 }
 
-.right {
-  width: 40%;
+.middle-right {
+  width: 25%;
+  text-align: left;
 }
 
-.header {
-  border-right: #004ca6 solid 1px;
-  padding-top: 25px;
-  height: 55px;
-  background: rgba(182, 221, 244, 0.49);
+.right {
+  width: 20%;
+  text-align: left;
+}
+
+.list-header {
+  padding-top: 20px;
+}
+
+.td-left {
+  padding-left: 12%;
+  width: 60%;
+}
+
+.td-right {
+  width: 18%;
 }
 
 .image {
-  padding-top: 10px;
+  padding-top: 5px;
 }
 
 .content {
-  padding-top: 15px;
+  padding-top: 5px;
 }
 
 .hidden {
@@ -50,5 +114,9 @@ li {
   border-radius: 5px;
   background: rgba(189, 232, 255, 0.2);
   margin: 10px;
+  color: #5e5e5e;
+  text-align: center;
+  list-style: none;
 }
+
 
