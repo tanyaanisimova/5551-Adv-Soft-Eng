@@ -14,8 +14,7 @@
 
 <script>
   function speak() {
-    console.log("called");
-    responsiveVoice.speak("hello world");
+    responsiveVoice.speak(document.getElementById('food-input').value);
   }
 </script>
 </html>

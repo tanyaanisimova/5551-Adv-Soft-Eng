@@ -1,2 +1,25 @@
-<button (click)="searchNutrition()">Search</button>
-<button onClick="speak()">Search</button>
+<label>
+  <input [(ngModel)]="food" type="text" id="food-input"/>
+</label>
+<button (click)="search()" onClick="speak()">Search</button>
+
+<div class="card text-white bg-dark mb-3 center" *ngIf="showNutrition" style="margin-top: 25px;">
+  <div class="card-header center">
+    {{nutrition.name}}
+  </div>
+
+  <div class="card-body">
+    <table class="table table-dark">
+      <tbody>
+      <tr>
+        <td class="td-left">Calories</td>
+        <td class="td-right">{{nutrition.calories}}</td>
+      </tr>
+      <tr>
+        <td class="td-left">Serving Weight</td>
+        <td class="td-right">{{nutrition.serving}} g</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
