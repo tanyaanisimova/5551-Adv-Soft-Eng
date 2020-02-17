@@ -17,3 +17,5 @@ export class HttpService {
       `${this.NUTRITION_URL}${searchInput}?results=0:1&fields=*&appId=${this.APP_ID}&appKey=${this.API_KEY}`);
   }
 }
+
+

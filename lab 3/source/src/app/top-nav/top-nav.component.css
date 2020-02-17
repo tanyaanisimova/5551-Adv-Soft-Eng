@@ -1,0 +1,7 @@
+.hover:hover {
+  cursor: pointer;
+}
+
+.disabled:hover {
+   /*override*/
+}

@@ -1,0 +1,23 @@
+.fit-image {
+  width: 100%;
+}
+.jumbotron {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
+  border: 1px solid black;
+}
+.container-fluid {
+  background-color: #487130;
+  font-size: 18px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+a:hover {
+  cursor: pointer;
+}

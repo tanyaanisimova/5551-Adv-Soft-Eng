@@ -1,0 +1,95 @@
+<app-top-nav></app-top-nav>
+
+<div class="container-fluid">
+  <div class="row pt-5">
+    <div class="col-sm-8">
+      <div class="jumbotron jumbotron-fluid" style="padding-top: 40px; padding-bottom:40px">
+        <div class="container">
+          <img src="../../assets/images/healthy-food-heart.jpg"
+            class="img-fluid fit-image" alt="Responsive image"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="card bg-light mb-3" style="max-width: 30rem;">
+        <div class="card-header text-center">
+          <h4 style="margin-bottom: 0;">{{isRegister ? 'Register' : 'Sign In'}}</h4>
+        </div>
+        <div class="card-body">
+
+          <div class="text-center" *ngIf="message !== ''">
+            <Label class="text-danger">{{ message }}</Label>
+          </div>
+
+          <div class="row mt-1" *ngIf="isRegister">
+            <div class="col-sm" style="max-width: 35%;">
+              <label>Name: </label>
+            </div>
+            <div class="col-sm">
+              <input [(ngModel)]="name" type="text" name="name" style="font-size: 14px" size="28"/>
+            </div>
+          </div>
+
+          <div class="row mt-1">
+            <div class="col-sm" style="max-width: 35%;">
+              <label>Email: </label>
+            </div>
+            <div class="col-sm">
+              <input [(ngModel)]="email" type="text" name="email" style="font-size: 14px" size="28"/>
+            </div>
+          </div>
+
+          <div class="row mt-1">
+            <div class="col-sm" style="max-width: 35%;">
+              <label>Password: </label>
+            </div>
+            <div class="col-sm">
+              <input [(ngModel)]="password" type="password" name="password" style="font-size: 14px" size="28"/>
+            </div>
+          </div>
+
+          <div style="margin-top: 25px">
+            <div *ngIf="!isRegister">
+              <div class=" text-center" style="margin-bottom: 10px">
+                <button (click)="signIn()" type="button" class="btn btn-dark">
+                  Sign In
+                </button>
+              </div>
+
+              <div class="text-center">
+                <div>
+                  <span style="font-size: 17px; margin-right: .25em;">
+                    New to Nutrition Facts?
+                  </span>
+
+                  <a style="text-decoration: underline; color: #202429;"
+                     (click)="displayRegister()">Register</a>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="isRegister">
+              <div class=" text-center" style="margin-bottom: 10px">
+                <button (click)="register()" type="button" class="btn btn-dark">
+                  Register
+                </button>
+              </div>
+
+              <div class="text-center">
+                <div>
+                  <span style="font-size: 17px; margin-right: .25em;">
+                    Already have an account?
+                  </span>
+
+                  <a style="text-decoration: underline; color: #202429;"
+                     (click)="displaySignIn()">Sign In</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

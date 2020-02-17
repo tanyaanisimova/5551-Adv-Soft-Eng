@@ -1,20 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Source</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://code.responsivevoice.org/responsivevoice.js?key=ZzJeoEOO"></script>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-<app-root></app-root>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Nutrition Facts</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="./assets/images/cal.png" />
+    <script src="https://code.responsivevoice.org/responsivevoice.js?key=ZzJeoEOO"></script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
 
-<script>
-  function speak() {
-    responsiveVoice.speak(document.getElementById('food-input').value);
-  }
-</script>
+  <script>
+    function speak() {
+      responsiveVoice.speak(document.getElementById('food-name').innerText);
+    }
+  </script>
 </html>

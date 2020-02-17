@@ -1,0 +1,18 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-md bg-faded justify-content-center">
+  <a class="navbar-brand d-flex w-50 mr-auto" routerLink="/" style="color: #e9ecef;">
+    <img src="../../assets/images/cal.png" width="30" height="30" class="d-inline-block align-top"
+         alt="Nutrition Facts" style="margin-right: 10px"/>
+    {{title}}
+  </a>
+
+  <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+    <li class="nav-item" *ngIf="user !== null">
+      <a class="nav-link disabled" style="color: #e9ecef; margin-right: 10px;">Welcome, {{user.name}}!</a>
+    </li>
+
+    <li class="nav-item" *ngIf="user !== null">
+      <a class="nav-link hover" style="text-decoration: underline; color: #e9ecef;" (click)="signOut()">Sign Out</a>
+    </li>
+  </ul>
+</nav>
+
