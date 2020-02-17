@@ -1,7 +1,5 @@
 {
   "name": "authApp",
-  "integrations": {
-    "cordova": {}
-  },
+  "integrations": {},
   "type": "angular"
 }
