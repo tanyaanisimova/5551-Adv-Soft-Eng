@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,13 +9,17 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private router: Router ) { }
+  constructor(private router: Router, private  authService: AuthService ) { }
 
   ngOnInit() {
   }
 
   login() {
-    this.router.navigateByUrl('home');
+    if (this.authService.login('tanya@email', 'pass')) {
+      this.router.navigateByUrl('home');
+    } else {
+      // Invalid credentials message
+    }
   }
 
   register() {
