@@ -23,17 +23,17 @@ export class AuthService {
     }
 
     // save current user to local storage
-    localStorage.setItem(this.CURR_USER_KEY, JSON.stringify(user));
+    sessionStorage.setItem(this.CURR_USER_KEY, JSON.stringify(user));
     return true; // successful login
   }
 
   logout() {
     // clear current user
-    localStorage.setItem(this.CURR_USER_KEY, null);
+    sessionStorage.setItem(this.CURR_USER_KEY, null);
   }
 
   getUserName() {
-    const user: User = JSON.parse(localStorage.getItem(this.CURR_USER_KEY));
+    const user: User = JSON.parse(sessionStorage.getItem(this.CURR_USER_KEY));
     return user.name;
   }
 
@@ -43,9 +43,10 @@ export class AuthService {
     }
 
     const user: User = { name, email, password };
+    // add user to storage
     localStorage.setItem(user.email, JSON.stringify(user));
     // save current user
-    localStorage.setItem(this.CURR_USER_KEY, JSON.stringify(user));
+    sessionStorage.setItem(this.CURR_USER_KEY, JSON.stringify(user));
     return true; // successful registration
   }
 }
