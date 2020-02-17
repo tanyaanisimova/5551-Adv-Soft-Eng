@@ -1,0 +1,7 @@
+{
+  "name": "authApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
