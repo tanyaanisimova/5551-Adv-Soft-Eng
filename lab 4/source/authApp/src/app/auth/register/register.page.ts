@@ -7,6 +7,7 @@ import { AuthService } from '../auth.service';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
+
 export class RegisterPage implements OnInit {
   name = '';
   email = '';
