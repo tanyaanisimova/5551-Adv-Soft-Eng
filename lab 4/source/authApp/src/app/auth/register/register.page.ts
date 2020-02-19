@@ -26,6 +26,7 @@ export class RegisterPage implements OnInit {
 
     if (this.authService.register(this.name, this.email, this.password)) {
       this.router.navigateByUrl('home');
+      this.reset();
     } else {
       this.message = 'Email already in use';
     }
@@ -33,5 +34,13 @@ export class RegisterPage implements OnInit {
 
   login() {
     this.router.navigateByUrl('login');
+    this.reset();
+  }
+
+  reset() {
+    this.name = '';
+    this.email = '';
+    this.password = '';
+    this.message = '';
   }
 }
