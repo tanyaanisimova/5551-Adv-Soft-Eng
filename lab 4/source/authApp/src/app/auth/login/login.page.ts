@@ -8,6 +8,9 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  email = '';
+  password = '';
+  message = '';
 
   constructor(private router: Router, private  authService: AuthService ) { }
 
@@ -15,10 +18,15 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    if (this.authService.login('tanya@email', 'pass')) {
+    if (this.email.trim() === '' || this.password.trim() !== '') {
+      this.message = 'Please fill in all fields';
+      return;
+    }
+
+    if (this.authService.login(this.email, this.password)) {
       this.router.navigateByUrl('home');
     } else {
-      // Invalid credentials message
+      this.message = 'Invalid credentials';
     }
   }
 

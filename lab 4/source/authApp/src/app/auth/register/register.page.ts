@@ -8,6 +8,10 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  name = '';
+  email = '';
+  password = '';
+  message = '';
 
   constructor(private router: Router, private  authService: AuthService ) { }
 
@@ -15,10 +19,15 @@ export class RegisterPage implements OnInit {
   }
 
   register() {
-    if (this.authService.register('tanya', 'tanya@email', 'pass')) {
+    if (this.name.trim() === '' || this.email.trim() === '' || this.password.trim() === '') {
+      this.message = 'Please fill in all fields';
+      return;
+    }
+
+    if (this.authService.register(this.name, this.email, this.password)) {
       this.router.navigateByUrl('home');
     } else {
-      // email already in use
+      this.message = 'Email already in use';
     }
   }
 

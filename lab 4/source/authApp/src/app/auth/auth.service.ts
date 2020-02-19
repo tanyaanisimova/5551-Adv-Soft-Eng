@@ -32,17 +32,19 @@ export class AuthService {
     sessionStorage.setItem(this.CURR_USER_KEY, null);
   }
 
-  getUserName() {
-    const user: User = JSON.parse(sessionStorage.getItem(this.CURR_USER_KEY));
-    return user.name;
-  }
+  // getUserName() {
+  //   const user: User = JSON.parse(sessionStorage.getItem(this.CURR_USER_KEY));
+  //   return user.name;
+  // }
 
   register(name, email, password) {
-    if (localStorage.getItem(email) != null) {
+    let user: User = JSON.parse(sessionStorage.getItem(this.CURR_USER_KEY));
+    //   return user.name;
+    if (user != null) {
       return false; // email already in use
     }
 
-    const user: User = { name, email, password };
+    user = { name, email, password };
     // add user to storage
     localStorage.setItem(user.email, JSON.stringify(user));
     // save current user
