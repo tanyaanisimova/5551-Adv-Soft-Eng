@@ -26,7 +26,7 @@ export class RegisterPage implements OnInit {
     }
 
     if (this.authService.register(this.name, this.email, this.password)) {
-      this.router.navigateByUrl('home');
+      this.router.navigateByUrl('');
       this.reset();
     } else {
       this.message = 'Email already in use';

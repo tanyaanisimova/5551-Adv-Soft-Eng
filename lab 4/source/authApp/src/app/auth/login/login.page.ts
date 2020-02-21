@@ -24,7 +24,7 @@ export class LoginPage implements OnInit {
     }
 
     if (this.authService.login(this.email, this.password)) {
-      this.router.navigateByUrl('home');
+      this.router.navigateByUrl('');
       this.reset();
     } else {
       this.message = 'Invalid credentials';
