@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="error-msg" *ngIf="message != ''" style="text-align:center; margin: 30px auto 0 auto;">{{message}}</div>
+  <div class="error-msg" *ngIf="message != ''">{{message}}</div>
 
   <ion-item>
     <ion-input [(ngModel)]="name"  placeholder="Name"></ion-input>

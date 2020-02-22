@@ -18,17 +18,19 @@ export class Tab2Page {
 
   search() {
     if (this.animal.trim() === '') {
+      this.fact = '';
       this.message = 'Please enter an animal.';
       return;
     }
     this.httpService.getAnimalFact(this.animal).subscribe((data) => {
       if (data['all'].length === 0) {
+        this.fact = '';
         this.message = 'No results found for ' + this.animal;
 
       } else {
         this.message = '';
-        this.fact = data['all'][0].text;
-        this.animal = '';
+        const random = Math.floor(Math.random() * data['all'].length);
+        this.fact = data['all'][random].text;
       }
     });
   }

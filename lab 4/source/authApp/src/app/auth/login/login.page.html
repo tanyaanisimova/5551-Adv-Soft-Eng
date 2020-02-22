@@ -5,19 +5,23 @@
 </ion-header>
 
 <ion-content>
-  <div class="error-msg" *ngIf="message !== ''" style="text-align:center; margin: 30px auto 0 auto;">{{message}}</div>
+  <div class="error-msg" *ngIf="message !== ''">{{message}}</div>
 
   <ion-item>
     <ion-input [(ngModel)]="email" placeholder="Email"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input [(ngModel)]="password"  placeholder="Password"></ion-input>
+    <ion-input [(ngModel)]="password"  placeholder="Password" type="password">
+    </ion-input>
   </ion-item>
 
   <div style="text-align:center;">
-    <ion-button (click)="login()" style="margin: 40px auto 0 auto;">Sign In</ion-button>
+    <ion-button (click)="login()"  style="margin: 40px auto 0 auto;">
+      Sign In
+    </ion-button>
   </div>
+
   <div style="text-align:center; margin: 20px auto 0 auto;">
     Don't have an account yet?
     <a (click)="register()" class="link">Register</a>
