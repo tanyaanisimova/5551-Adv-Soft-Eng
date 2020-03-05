@@ -55,7 +55,7 @@ const command = yargs.argv._[0];
 
 if (command === 'add'){
     const customer = customers.create(argv.id, argv.firstName, argv.lastName, argv.email, argv.phone);
-    if (customer){
+    if (customer) {
         console.log("Added Customer");
         customers.logCustomer(customer);
     } else{
@@ -83,6 +83,6 @@ else if (command === 'delete') {
     console.log(message);
 }
 
-else{
-  console.log('command recognized');
+else {
+    console.log('command recognized');
 }

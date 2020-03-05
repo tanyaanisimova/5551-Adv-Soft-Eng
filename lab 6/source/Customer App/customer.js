@@ -29,35 +29,16 @@ const create = (id, firstName, lastName, email, phone) => {
       return customer.id === id;
     });
 
-    if (duplicateCustomers.length === 0){
+    if (duplicateCustomers.length === 0) {
       customers.push(customer);
       saveCustomers(customers);
       return customer
     }
-  };
-
-
-//to list all the notes
+};
 
 const listAll = () => {
     return getCustomers();
 };
-
-
-// // to read a note
-//
-// const getNote = (title) => {
-//
-//     const notes = getCustomers();
-//
-//     const getNotes =  notes.filter((note) => {  // to check if note exists and return note
-//       return note.title === title;
-//     });
-//
-//     return getNotes[0]
-//
-// };
-
 
 const remove = (id) => {
 
@@ -80,8 +61,6 @@ const logCustomer = (customer) => {
     console.log(`Phone Number: ${customer.phone}`);
 };
 
-// add new function names here to be accessible from other modules
-
 module.exports = {
-  create, listAll, remove, logCustomer
+    create, listAll, remove, logCustomer
 };
