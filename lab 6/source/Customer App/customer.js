@@ -1,12 +1,10 @@
 const fs = require('fs');
 
-// ------------------Begin of Reusable functions ---------------------
-
 const getCustomers = () => {
-  try {                          //if file won't exist
+  try {
       const customerString = fs.readFileSync('customer-data.json');
       return JSON.parse(customerString);
-  } catch(e){
+  } catch(e) {
     return [];
   }
 };
@@ -15,17 +13,11 @@ const saveCustomers = (customers) => {
   fs.writeFileSync('customer-data.json',JSON.stringify(customers));
 };
 
-
-// ------------------End of Reusable functions ---------------------
-
-
-//  to add a new note
-
 const create = (id, firstName, lastName, email, phone) => {
     const customers = getCustomers();
     const customer = {id, firstName, lastName, email, phone};
 
-    const duplicateCustomers =  customers.filter((customer) => { // to check if note already exists
+    const duplicateCustomers =  customers.filter((customer) => {
       return customer.id === id;
     });
 
@@ -41,11 +33,10 @@ const listAll = () => {
 };
 
 const remove = (id) => {
-
     const customers = getCustomers();
 
     const filteredCustomers =  customers.filter((customer) => {
-      return customer.id !== id;
+        return customer.id !== id;
     });
 
     saveCustomers(filteredCustomers);

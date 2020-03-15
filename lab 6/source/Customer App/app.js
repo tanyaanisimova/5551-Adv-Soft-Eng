@@ -45,6 +45,9 @@ const argv =  yargs
     .command('delete','Delete customer',{
         id: idOptions,
     })
+    .command('update','Update customer',{
+        id: idOptions,
+    })
     .help()
     .argv;
 
@@ -53,7 +56,7 @@ const argv =  yargs
 
 const command = yargs.argv._[0];
 
-if (command === 'add'){
+if (command === 'add') {
     const customer = customers.create(argv.id, argv.firstName, argv.lastName, argv.email, argv.phone);
     if (customer) {
         console.log("Added Customer");
