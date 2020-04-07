@@ -7,48 +7,42 @@ const fs = require('fs')
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
-// let's first add a /secret api endpoint that we will be protecting
-app.get('/secret', isAuthorized, (req, res) => {
-    res.json({ "message" : "THIS IS SUPER SECRET, DO NOT SHARE!" })
-})
-
-// and a /readme endpoint which will be open for the world to see 
+// public readme
 app.get('/readme', (req, res) => {
     res.json({ "message" : "This is open to the world!" })
 })
 
+// private: only allow authorized users
+app.get('/secret', isAuthorized, (req, res) => {
+    res.json({ "message" : "THIS IS SUPER SECRET, DO NOT SHARE!" })
+})
+
+// print JWT signed with the private key file
 app.get('/jwt', (req, res) => {
     let privateKey = fs.readFileSync('./private.pem', 'utf8');
-    let token = jwt.sign({ "body": "stuff" }, "MySuperSecretPassPhrase", { algorithm: 'HS256'});
+    let token = jwt.sign({ "body": "stuff" }, privateKey, { algorithm: 'HS256'});
     res.send(token);
 })
 
+// start application on the specified port
 app.listen(port, 
     () => console.log(`Simple Express app listening on port ${port}!`))
 
+
+// verify that the token provided was signed by our private key file
 function isAuthorized(req, res, next) {
     if (typeof req.headers.authorization !== "undefined") {
-        // retrieve the authorization header and parse out the
-        // JWT using the split function
-        let token = req.headers.authorization.split(" ")[1];
+        let token = req.headers.authorization.split(" ")[0];
         let privateKey = fs.readFileSync('./private.pem', 'utf8');
-        // Here we validate that the JSON Web Token is valid and has been 
-        // created using the same private pass phrase
+        
         jwt.verify(token, privateKey, { algorithm: "HS256" }, (err, user) => {
-            
-            // if there has been an error...
-            if (err) {  
-                // shut them out!
+            if (err) {  // not signed by our private key file
                 res.status(500).json({ error: "Not Authorized" });
                 throw new Error("Not Authorized");
             }
-            // if the JWT is valid, allow them to hit
-            // the intended endpoint
             return next();
         });
-    } else {
-        // No authorization header exists on the incoming
-        // request, return not authorized and throw a new error 
+    } else { // no authorization provided
         res.status(500).json({ error: "Not Authorized" });
         throw new Error("Not Authorized");
     }
